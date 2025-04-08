@@ -97,8 +97,10 @@ export default function WorkoutTracker() {
   });
   const [noteContent, setNoteContent] = useState("");
 
+  // Add a ref to track if data has been loaded
   const dataLoaded = useRef(false);
 
+  // Header component for consistent navigation
   const Header = () => (
     <div className="mb-6">
       <h1 className="text-2xl font-bold text-center mb-4 text-indigo-600">
@@ -159,31 +161,33 @@ export default function WorkoutTracker() {
     </div>
   );
 
+  // Load data once on mount
   useEffect(() => {
+    // Prevent multiple loading of data
     if (dataLoaded.current) return;
 
+    // Mark data as loaded at the beginning
     dataLoaded.current = true;
 
+    // Load completed state
     try {
       const stored = localStorage.getItem("workoutProgress");
       if (stored) {
         const parsedData = JSON.parse(stored);
         const twelveWeeksAgo = Date.now() - 12 * 7 * 24 * 60 * 60 * 1000;
-
         const cleanedData = Object.fromEntries(
-          Object.entries(parsedData).filter(([_, value]) => {
-            const timestamp =
-              typeof value === "object" ? value.timestamp : value;
-            return timestamp > twelveWeeksAgo;
-          })
+          Object.entries(parsedData).filter(
+            ([_, timestamp]) => timestamp > twelveWeeksAgo
+          )
         );
         setCompleted(cleanedData);
       }
     } catch (error) {
       console.error("Error loading workout progress:", error);
-      localStorage.removeItem("workoutProgress");
+      localStorage.removeItem("workoutProgress"); // Clear only if corrupted
     }
 
+    // Load expanded state
     try {
       const storedExpanded = localStorage.getItem("expandedWeeks");
       if (storedExpanded) {
@@ -194,11 +198,12 @@ export default function WorkoutTracker() {
       }
     } catch (error) {
       console.error("Error loading expanded weeks:", error);
-      localStorage.removeItem("expandedWeeks");
+      localStorage.removeItem("expandedWeeks"); // Clear only if corrupted
       const firstWeek = Object.keys(WORKOUT_PLAN_FULL)[0];
-      setExpandedWeeks({ [firstWeek]: true });
+      setExpandedWeeks({ [firstWeek]: true }); // Reset to default
     }
 
+    // Load progress data
     try {
       const storedProgress = localStorage.getItem("progressData");
       if (storedProgress) {
@@ -219,7 +224,8 @@ export default function WorkoutTracker() {
       }
     } catch (error) {
       console.error("Error loading or parsing progress data:", error);
-      localStorage.removeItem("progressData");
+      localStorage.removeItem("progressData"); // Clear only if corrupted
+      // Initialize with empty arrays if data is corrupted or missing
       setProgressData({
         lifts: [],
         measurements: [],
@@ -228,6 +234,7 @@ export default function WorkoutTracker() {
     }
   }, []);
 
+  // Debounced save to localStorage
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       try {
@@ -239,6 +246,7 @@ export default function WorkoutTracker() {
     return () => clearTimeout(timeoutId);
   }, [completed]);
 
+  // Save expanded state to localStorage
   useEffect(() => {
     try {
       localStorage.setItem("expandedWeeks", JSON.stringify(expandedWeeks));
@@ -247,6 +255,7 @@ export default function WorkoutTracker() {
     }
   }, [expandedWeeks]);
 
+  // Save progress data to localStorage
   useEffect(() => {
     try {
       localStorage.setItem("progressData", JSON.stringify(progressData));
@@ -317,6 +326,7 @@ export default function WorkoutTracker() {
     [completed]
   );
 
+  // Toggle week expansion
   const toggleWeekExpansion = useCallback((week) => {
     setExpandedWeeks((prev) => ({
       ...prev,
@@ -325,6 +335,7 @@ export default function WorkoutTracker() {
   }, []);
 
   const showDetails = useCallback((exercise) => {
+    // Check if it's a warm-up or cool-down
     if (exercise.startsWith("Warm-Up:") || exercise.startsWith("Cool-Down:")) {
       setModalContent({
         title: exercise.split(":")[0].trim(),
@@ -334,6 +345,7 @@ export default function WorkoutTracker() {
       return;
     }
 
+    // For cardio exercises with duration
     if (
       exercise.match(
         /(Elliptical|Treadmill|Row|Walk|Run).*(min|ladder|pyramid|intervals)/i
@@ -347,24 +359,27 @@ export default function WorkoutTracker() {
       return;
     }
 
+    // Extract the base exercise name (remove sets/reps and parenthetical notes)
     const baseExercise = exercise
-      .replace(/\s*\d+x\d+.*$/, "")
-      .replace(/\s*\([^)]*\)/g, "")
-      .replace(/\s+ea$/, "")
+      .replace(/\s*\d+x\d+.*$/, "") // Remove sets/reps
+      .replace(/\s*\([^)]*\)/g, "") // Remove parenthetical notes
+      .replace(/\s+ea$/, "") // Remove "ea" suffix
       .split(" ")
-      .filter((word) => !word.match(/^[0-9]+$/))
+      .filter((word) => !word.match(/^[0-9]+$/)) // Remove standalone numbers
       .join(" ")
       .trim();
 
+    // Try different name variations
     const variations = [
       baseExercise,
-      baseExercise.replace(/^DB\s+/, ""),
-      baseExercise.replace(/^Barbell\s+/, ""),
+      baseExercise.replace(/^DB\s+/, ""), // Try without "DB" prefix
+      baseExercise.replace(/^Barbell\s+/, ""), // Try without "Barbell" prefix
       ...baseExercise
         .split(" ")
         .map((_, i) => baseExercise.split(" ").slice(i).join(" ")),
     ];
 
+    // Find the first matching exercise in our guide
     const match = variations.find((v) => EXERCISE_GUIDE_FULL[v]);
     if (match && EXERCISE_GUIDE_FULL[match]) {
       const setsReps = exercise.match(/\d+x\d+/)?.[0] || "";
@@ -384,6 +399,7 @@ export default function WorkoutTracker() {
         isExercise: true,
       });
     } else {
+      // For exercises without a guide entry, show the exercise as is
       setModalContent({
         title: baseExercise,
         description:
@@ -396,8 +412,10 @@ export default function WorkoutTracker() {
     }
   }, []);
 
+  // Function to check if all exercises in a week are completed
   const isWeekCompleted = useCallback(
     (week, exercises) => {
+      // Check all individual exercises
       const individualExercises = exercises.filter(
         (ex) => !ex.match(/^(Superset|Tri-Set|Complex)\s+(\d+)[A-Z]:/i)
       );
@@ -405,6 +423,7 @@ export default function WorkoutTracker() {
         (ex) => completed[`${week}-${ex}`]
       );
 
+      // Check all exercise groups
       const groups = new Set();
       exercises.forEach((ex) => {
         const match = ex.match(/^(Superset|Tri-Set|Complex)\s+(\d+)[A-Z]:/i);
@@ -417,15 +436,17 @@ export default function WorkoutTracker() {
         (groupKey) => completed[groupKey]
       );
 
+      // Week is completed if all individual exercises and all groups are completed
       return (
         allIndividualCompleted &&
         allGroupsCompleted &&
         (individualExercises.length > 0 || groups.size > 0)
-      );
+      ); // Ensure there are exercises to check
     },
     [completed]
   );
 
+  // Update the renderExercises function to use the new design
   const renderExercises = (week, exercises) => {
     const renderedElements = [];
     let i = 0;
@@ -442,6 +463,7 @@ export default function WorkoutTracker() {
         const groupItems = [];
         const exercisesInGroup = [];
 
+        // Find all items in this group
         while (
           i < exercises.length &&
           exercises[i].match(
@@ -467,6 +489,7 @@ export default function WorkoutTracker() {
           i++;
         }
 
+        // Add the group container with a single button
         renderedElements.push(
           <div
             key={groupKey}
@@ -513,6 +536,7 @@ export default function WorkoutTracker() {
           </div>
         );
       } else {
+        // Render individual exercise with improved styling
         const key = `${week}-${ex}`;
         const exerciseData = completed[key];
         renderedElements.push(
@@ -545,7 +569,7 @@ export default function WorkoutTracker() {
                     >
                       <path
                         fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 01-1.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                         clipRule="evenodd"
                       />
                     </svg>
@@ -567,6 +591,84 @@ export default function WorkoutTracker() {
       }
     }
     return renderedElements;
+  };
+
+  // Function to add a new progress entry
+  const addProgressEntry = (type) => {
+    if (type === "lifts" && (!newEntry.lift || !newEntry.weight)) {
+      alert("Please fill in all required fields");
+      return;
+    } else if (
+      type === "measurements" &&
+      (!newEntry.measurement || !newEntry.value)
+    ) {
+      alert("Please fill in all required fields");
+      return;
+    } else if (
+      type === "cardio" &&
+      (!newEntry.cardioType || !(newEntry.duration || newEntry.distance))
+    ) {
+      alert("Please fill in all required fields");
+      return;
+    }
+
+    setProgressData((prev) => {
+      const updatedData = { ...prev };
+
+      if (type === "lifts") {
+        updatedData.lifts = [
+          ...updatedData.lifts,
+          {
+            id: Date.now(),
+            date: newEntry.date,
+            exercise: newEntry.lift,
+            weight: parseFloat(newEntry.weight),
+            reps: newEntry.reps ? parseInt(newEntry.reps) : null,
+          },
+        ];
+        setNewEntry((prev) => ({ ...prev, lift: "", weight: "", reps: "" }));
+      } else if (type === "measurements") {
+        updatedData.measurements = [
+          ...updatedData.measurements,
+          {
+            id: Date.now(),
+            date: newEntry.date,
+            type: newEntry.measurement,
+            value: parseFloat(newEntry.value),
+          },
+        ];
+        setNewEntry((prev) => ({ ...prev, measurement: "", value: "" }));
+      } else if (type === "cardio") {
+        updatedData.cardio = [
+          ...updatedData.cardio,
+          {
+            id: Date.now(),
+            date: newEntry.date,
+            type: newEntry.cardioType,
+            duration: newEntry.duration ? parseFloat(newEntry.duration) : null,
+            distance: newEntry.distance ? parseFloat(newEntry.distance) : null,
+          },
+        ];
+        setNewEntry((prev) => ({
+          ...prev,
+          cardioType: "",
+          duration: "",
+          distance: "",
+        }));
+      }
+
+      return updatedData;
+    });
+  };
+
+  // Function to delete progress entry
+  const deleteProgressEntry = (type, id) => {
+    setProgressData((prev) => {
+      const updatedData = { ...prev };
+      updatedData[type] = updatedData[type].filter((entry) => entry.id !== id);
+
+      return updatedData;
+    });
   };
 
   if (view === "progress") {
@@ -1091,7 +1193,7 @@ export default function WorkoutTracker() {
                   >
                     <path
                       fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 001.414 0l4-4z"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                       clipRule="evenodd"
                     />
                   </svg>
@@ -1111,7 +1213,7 @@ export default function WorkoutTracker() {
                 >
                   <path
                     fillRule="evenodd"
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 011.414-1.414l4 4a1 1 010 1.414l-4 4a1 1 01-1.414 0z"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                     clipRule="evenodd"
                   />
                 </svg>
@@ -1148,7 +1250,7 @@ export default function WorkoutTracker() {
                   >
                     <path
                       fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 000 16zm3.707-9.293a1 1 00-1.414-1.414L9 10.586 7.707 9.293a1 1 00-1.414 1.414l2 2a1 1 001.414 0l4-4z"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                       clipRule="evenodd"
                     />
                   </svg>
@@ -1175,7 +1277,7 @@ export default function WorkoutTracker() {
               >
                 <path
                   fillRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 011.414 1.414L11.414 10l4.293 4.293a1 1 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 01-1.414-1.414L8.586 10 4.293 5.707a1 1 010-1.414z"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                   clipRule="evenodd"
                 />
               </svg>
@@ -1228,7 +1330,7 @@ export default function WorkoutTracker() {
               >
                 <path
                   fillRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 011.414 1.414L11.414 10l4.293 4.293a1 1 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 01-1.414-1.414L8.586 10 4.293 5.707a1 1 010-1.414z"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                   clipRule="evenodd"
                 />
               </svg>
