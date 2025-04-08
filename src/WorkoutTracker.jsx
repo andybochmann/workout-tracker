@@ -31,6 +31,29 @@ export default function WorkoutTracker() {
   // Add a ref to track if data has been loaded
   const dataLoaded = useRef(false);
 
+  // Header component for consistent navigation
+  const Header = () => (
+    <div className="mb-6">
+      <h1 className="text-2xl font-bold text-center mb-4">
+        12-Week Fat Loss Tracker
+      </h1>
+      <div className="flex justify-center gap-3">
+        <button
+          onClick={() => setShowGuide(true)}
+          className="px-4 py-2 btn btn-primary rounded-lg shadow-md"
+        >
+          Reference Guide
+        </button>
+        <button
+          onClick={() => setView(view === "workouts" ? "progress" : "workouts")}
+          className="px-4 py-2 btn btn-primary rounded-lg shadow-md"
+        >
+          {view === "workouts" ? "Progress Log" : "Back to Workouts"}
+        </button>
+      </div>
+    </div>
+  );
+
   // Load data once on mount
   useEffect(() => {
     // Prevent multiple loading of data
@@ -454,6 +477,7 @@ export default function WorkoutTracker() {
   if (view === "progress") {
     return (
       <div className="p-4 max-w-3xl mx-auto">
+        <Header />
         <h1 className="text-xl font-bold mb-4">Progress Log</h1>
 
         <div className="mb-4 flex border-b">
@@ -803,37 +827,13 @@ export default function WorkoutTracker() {
             </div>
           )}
         </div>
-
-        <button
-          onClick={() => setView("workouts")}
-          className="px-4 py-2 btn btn-primary rounded"
-        >
-          Back to Workouts
-        </button>
       </div>
     );
   }
 
   return (
     <div className="p-4 space-y-4 max-w-3xl mx-auto">
-      <h1 className="text-2xl font-bold text-center">
-        12-Week Fat Loss Tracker
-      </h1>
-
-      <div className="flex justify-center gap-3">
-        <button
-          onClick={() => setShowGuide(true)}
-          className="px-4 py-2 btn btn-primary rounded-lg shadow-md"
-        >
-          Reference Guide
-        </button>
-        <button
-          onClick={() => setView("progress")}
-          className="px-4 py-2 btn btn-primary rounded-lg shadow-md"
-        >
-          Progress Log
-        </button>
-      </div>
+      <Header />
 
       {Object.entries(WORKOUT_PLAN_FULL).map(([week, exercises]) => {
         const weekCompleted = isWeekCompleted(week, exercises);
