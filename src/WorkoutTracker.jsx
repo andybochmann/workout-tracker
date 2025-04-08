@@ -9,6 +9,7 @@ export default function WorkoutTracker() {
   const [view, setView] = useState("workouts");
   const [modalContent, setModalContent] = useState(null);
   const [showGuide, setShowGuide] = useState(false);
+  const [expandedWeeks, setExpandedWeeks] = useState({});
 
   // Load data once on mount
   useEffect(() => {
@@ -25,10 +26,21 @@ export default function WorkoutTracker() {
         );
         setCompleted(cleanedData);
       }
+
+      // Load expanded state from localStorage
+      const storedExpanded = localStorage.getItem("expandedWeeks");
+      if (storedExpanded) {
+        setExpandedWeeks(JSON.parse(storedExpanded));
+      } else {
+        // By default, expand only the first week
+        const firstWeek = Object.keys(WORKOUT_PLAN_FULL)[0];
+        setExpandedWeeks({ [firstWeek]: true });
+      }
     } catch (error) {
-      console.error("Error loading progress:", error);
+      console.error("Error loading data:", error);
       // Reset if data is corrupted
       localStorage.removeItem("workoutProgress");
+      localStorage.removeItem("expandedWeeks");
     }
   }, []);
 
@@ -44,10 +56,49 @@ export default function WorkoutTracker() {
     return () => clearTimeout(timeoutId);
   }, [completed]);
 
+  // Save expanded state to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem("expandedWeeks", JSON.stringify(expandedWeeks));
+    } catch (error) {
+      console.error("Error saving expanded state:", error);
+    }
+  }, [expandedWeeks]);
+
   const toggleExercise = useCallback((week, exercise) => {
     const key = `${week}-${exercise}`;
-    setCompleted((prev) => ({ ...prev, [key]: prev[key] ? null : Date.now() }));
+    setCompleted((prev) => {
+      const newCompleted = { ...prev };
+      if (newCompleted[key]) {
+        delete newCompleted[key]; // Use delete for unmarking individual items
+      } else {
+        newCompleted[key] = Date.now();
+      }
+      return newCompleted;
+    });
   }, []);
+
+  // Function to toggle completion for an entire group
+  const toggleGroup = useCallback((groupKey) => {
+    setCompleted((prev) => {
+      const newCompleted = { ...prev };
+      if (newCompleted[groupKey]) {
+        delete newCompleted[groupKey]; // Use delete for unmarking groups
+      } else {
+        newCompleted[groupKey] = Date.now();
+      }
+      return newCompleted;
+    });
+  }, []);
+
+  // Toggle week expansion
+  const toggleWeekExpansion = useCallback((week) => {
+    setExpandedWeeks((prev) => ({
+      ...prev,
+      [week]: !prev[week],
+    }));
+  }, []);
+
   const showDetails = useCallback((exercise) => {
     // Check if it's a warm-up or cool-down
     if (exercise.startsWith("Warm-Up:") || exercise.startsWith("Cool-Down:")) {
@@ -126,6 +177,133 @@ export default function WorkoutTracker() {
     }
   }, []);
 
+  // Function to check if all exercises in a week are completed
+  const isWeekCompleted = useCallback(
+    (week, exercises) => {
+      // Check all individual exercises
+      const individualExercises = exercises.filter(
+        (ex) => !ex.match(/^(Superset|Tri-Set|Complex)\s+(\d+)[A-Z]:/i)
+      );
+      const allIndividualCompleted = individualExercises.every(
+        (ex) => completed[`${week}-${ex}`]
+      );
+
+      // Check all exercise groups
+      const groups = new Set();
+      exercises.forEach((ex) => {
+        const match = ex.match(/^(Superset|Tri-Set|Complex)\s+(\d+)[A-Z]:/i);
+        if (match) {
+          groups.add(`${week}-${match[1]}-${match[2]}`);
+        }
+      });
+
+      const allGroupsCompleted = Array.from(groups).every(
+        (groupKey) => completed[groupKey]
+      );
+
+      // Week is completed if all individual exercises and all groups are completed
+      return (
+        allIndividualCompleted &&
+        allGroupsCompleted &&
+        (individualExercises.length > 0 || groups.size > 0)
+      ); // Ensure there are exercises to check
+    },
+    [completed]
+  );
+
+  const renderExercises = (week, exercises) => {
+    const renderedElements = [];
+    let i = 0;
+    while (i < exercises.length) {
+      const ex = exercises[i];
+      const isGroupStart = ex.match(
+        /^(Superset|Tri-Set|Complex)\s+(\d+)[A-Z]:/i
+      );
+
+      if (isGroupStart) {
+        const groupType = isGroupStart[1];
+        const groupNumber = isGroupStart[2];
+        const groupKey = `${week}-${groupType}-${groupNumber}`; // Unique key for the group
+        const groupItems = [];
+        const exercisesInGroup = []; // Keep track of exercises in the group
+
+        // Find all items in this group
+        while (
+          i < exercises.length &&
+          exercises[i].match(
+            new RegExp(`^${groupType}\\s+${groupNumber}[A-Z]:`, "i")
+          )
+        ) {
+          const currentEx = exercises[i];
+          exercisesInGroup.push(currentEx); // Add exercise to list for potential future use
+
+          groupItems.push(
+            <div
+              key={`${week}-${currentEx}`} // Use unique key for list item
+              className="flex items-center justify-between p-2 rounded bg-white shadow transition hover:shadow-md"
+            >
+              <span
+                onClick={() => showDetails(currentEx)}
+                className="cursor-pointer hover:text-blue-600 flex-1 mr-2"
+              >
+                {/* Remove the A/B/C prefix for display */}
+                {currentEx.replace(/^[A-Z]:\s*/, "")}
+              </span>
+            </div>
+          );
+          i++;
+        }
+
+        // Add the group container with a single button
+        renderedElements.push(
+          <div
+            key={groupKey}
+            className={`border rounded-lg p-3 mt-2 space-y-2 shadow-md transition ${
+              completed[groupKey] ? "bg-green-100" : "bg-gray-50" // Conditional bg on group container
+            }`}
+          >
+            <div className="flex justify-between items-center mb-2">
+              <p className="font-semibold">{`${groupType} ${groupNumber}`}</p>
+              <button
+                onClick={() => toggleGroup(groupKey)} // Use toggleGroup
+                className="px-3 py-1 btn btn-primary rounded flex-shrink-0"
+              >
+                {completed[groupKey] ? "✓ Done" : "Mark Group Done"}
+              </button>
+            </div>
+            <div className="space-y-1">{groupItems}</div>
+          </div>
+        );
+      } else {
+        // Render individual exercise (unchanged from previous logic)
+        const key = `${week}-${ex}`;
+        renderedElements.push(
+          <div
+            key={key}
+            className={`flex items-center justify-between p-2 rounded shadow transition hover:shadow-md ${
+              completed[key] ? "bg-green-100" : "bg-white"
+            }`}
+          >
+            <span
+              onClick={() => showDetails(ex)}
+              className="cursor-pointer hover:text-blue-600 flex-1 mr-2"
+            >
+              {ex}
+            </span>
+            <button
+              onClick={() => toggleExercise(week, ex)} // Keep individual toggle for non-grouped items
+              className="px-3 py-1 btn btn-primary rounded flex-shrink-0"
+            >
+              {completed[key] ? "✓ Done" : "Mark Done"}
+            </button>
+          </div>
+        );
+        i++;
+      }
+    }
+    return renderedElements;
+  };
+
   if (view === "progress") {
     return (
       <div className="p-4">
@@ -142,7 +320,7 @@ export default function WorkoutTracker() {
         </ul>
         <button
           onClick={() => setView("workouts")}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="px-4 py-2 btn btn-primary rounded"
         >
           Back to Workouts
         </button>
@@ -151,100 +329,126 @@ export default function WorkoutTracker() {
   }
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="p-4 space-y-4 max-w-3xl mx-auto">
       <h1 className="text-2xl font-bold text-center">
         12-Week Fat Loss Tracker
       </h1>
-      <div className="flex justify-center gap-2">
+
+      <div className="flex justify-center gap-3">
         <button
           onClick={() => setShowGuide(true)}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="px-4 py-2 btn btn-primary rounded-lg shadow-md"
         >
           Reference Guide
         </button>
         <button
           onClick={() => setView("progress")}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="px-4 py-2 btn btn-primary rounded-lg shadow-md"
         >
           Progress Log
         </button>
       </div>
-      {Object.entries(WORKOUT_PLAN_FULL).map(([week, exercises]) => (
-        <div key={week} className="border rounded-lg p-4 mb-4">
-          <h2 className="text-xl font-semibold mb-2">{week}</h2>
-          <div className="space-y-2">
-            {exercises.map((ex, idx) => {
-              const key = `${week}-${ex}`;
-              return (
-                <div
-                  key={idx}
-                  className={`flex items-center justify-between p-2 rounded ${
-                    completed[key] ? "bg-green-100" : "bg-white"
-                  }`}
+
+      {Object.entries(WORKOUT_PLAN_FULL).map(([week, exercises]) => {
+        const weekCompleted = isWeekCompleted(week, exercises);
+        return (
+          <div key={week} className="border rounded-lg shadow overflow-hidden">
+            <div
+              className={`${
+                weekCompleted ? "bg-green-600" : "bg-blue-500"
+              } text-white p-3 flex justify-between items-center cursor-pointer hover:${
+                weekCompleted ? "bg-green-700" : "bg-blue-600"
+              } transition`}
+              onClick={() => toggleWeekExpansion(week)}
+            >
+              <h2 className="text-xl font-semibold">
+                {week} {weekCompleted && "✓"}
+              </h2>
+              <div
+                className={`transition-transform duration-300 ${
+                  expandedWeeks[week] ? "rotate-90" : "rotate-0"
+                }`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
                 >
-                  <span
-                    onClick={() => showDetails(ex)}
-                    className="cursor-pointer hover:text-blue-600"
-                  >
-                    {ex}
-                  </span>
-                  <button
-                    onClick={() => toggleExercise(week, ex)}
-                    className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-                  >
-                    {completed[key] ? "✓ Done" : "Mark Done"}
-                  </button>
-                </div>
-              );
-            })}
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            <div
+              className={`accordion-content ${
+                expandedWeeks[week] ? "open" : ""
+              }`}
+            >
+              <div className="p-4 space-y-2 bg-gray-50">
+                {renderExercises(week, exercises)}
+              </div>
+            </div>
           </div>
-        </div>
-      ))}{" "}
+        );
+      })}
+
       {modalContent && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-lg p-6 max-w-lg w-full">
-            <h3 className="text-xl font-bold mb-2">{modalContent.title}</h3>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full">
+            <h3 className="text-xl font-bold mb-3">{modalContent.title}</h3>
             {modalContent.isExercise ? (
               <>
-                <div className="mb-2 text-blue-600">
+                <div className="mb-3 text-blue-600 font-semibold">
                   {modalContent.prescription}
                 </div>
-                <p className="mb-4">{modalContent.description}</p>
+                <div className="mb-4 max-h-60 overflow-y-auto pr-2">
+                  <p>{modalContent.description}</p>
+                </div>
               </>
             ) : (
-              <p className="mb-4 text-gray-700">{modalContent.description}</p>
+              <div className="mb-4 max-h-60 overflow-y-auto pr-2">
+                <p className="text-gray-700">{modalContent.description}</p>
+              </div>
             )}
             <button
               onClick={() => setModalContent(null)}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              className="px-4 py-2 btn btn-primary rounded"
             >
               Close
             </button>
           </div>
         </div>
       )}
+
       {showGuide && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-          {" "}
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div
-            className="bg-white rounded-lg p-6 max-w-xl w-full"
-            style={{ maxHeight: "80vh" }}
+            className="bg-white rounded-lg shadow-lg p-6 max-w-xl w-full"
+            style={{ maxHeight: "90vh" }}
           >
             <h2 className="text-xl font-bold mb-4">Exercise Reference Guide</h2>
             <div
               className="space-y-3 overflow-y-auto pr-2"
-              style={{ maxHeight: "calc(80vh - 8rem)" }}
+              style={{ maxHeight: "calc(90vh - 8rem)" }}
             >
               {Object.entries(EXERCISE_GUIDE_FULL).map(([name, desc]) => (
-                <div key={name} className="p-2 border rounded">
-                  <strong>{name}</strong>
-                  <p>{desc}</p>
+                <div
+                  key={name}
+                  className="p-3 border rounded shadow-sm hover:shadow-md transition"
+                >
+                  <strong className="text-blue-600">{name}</strong>
+                  <p className="mt-1 text-gray-700">{desc}</p>
                 </div>
               ))}
             </div>
             <button
               onClick={() => setShowGuide(false)}
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              className="mt-4 px-4 py-2 btn btn-primary rounded"
             >
               Close Guide
             </button>
