@@ -454,7 +454,7 @@ export default function WorkoutTracker() {
                   >
                     <path
                       fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 01-1.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                       clipRule="evenodd"
                     />
                   </svg>
@@ -624,7 +624,151 @@ export default function WorkoutTracker() {
                 />
               </div>
 
-              {/* ...existing input fields for each tab... */}
+              {activeTab === "lifts" && (
+                <>
+                  <div>
+                    <label className="block text-sm font-medium mb-1 text-slate-700">
+                      Exercise
+                    </label>
+                    <input
+                      type="text"
+                      value={newEntry.lift}
+                      onChange={(e) =>
+                        setNewEntry({ ...newEntry, lift: e.target.value })
+                      }
+                      placeholder="e.g. Bench Press"
+                      className="w-full p-2 border rounded-lg"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1 text-slate-700">
+                      Weight (lbs/kg)
+                    </label>
+                    <input
+                      type="number"
+                      value={newEntry.weight}
+                      onChange={(e) =>
+                        setNewEntry({ ...newEntry, weight: e.target.value })
+                      }
+                      placeholder="e.g. 135"
+                      className="w-full p-2 border rounded-lg"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1 text-slate-700">
+                      Reps (optional)
+                    </label>
+                    <input
+                      type="number"
+                      value={newEntry.reps}
+                      onChange={(e) =>
+                        setNewEntry({ ...newEntry, reps: e.target.value })
+                      }
+                      placeholder="e.g. 8"
+                      className="w-full p-2 border rounded-lg"
+                    />
+                  </div>
+                </>
+              )}
+
+              {activeTab === "measurements" && (
+                <>
+                  <div>
+                    <label className="block text-sm font-medium mb-1 text-slate-700">
+                      Measurement Type
+                    </label>
+                    <select
+                      value={newEntry.measurement}
+                      onChange={(e) =>
+                        setNewEntry({
+                          ...newEntry,
+                          measurement: e.target.value,
+                        })
+                      }
+                      className="w-full p-2 border rounded-lg"
+                    >
+                      <option value="">Select type</option>
+                      <option value="Weight">Weight</option>
+                      <option value="Waist">Waist</option>
+                      <option value="Chest">Chest</option>
+                      <option value="Arms">Arms</option>
+                      <option value="Thighs">Thighs</option>
+                      <option value="Body Fat %">Body Fat %</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1 text-slate-700">
+                      Value
+                    </label>
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={newEntry.value}
+                      onChange={(e) =>
+                        setNewEntry({ ...newEntry, value: e.target.value })
+                      }
+                      placeholder="e.g. 180.5"
+                      className="w-full p-2 border rounded-lg"
+                    />
+                  </div>
+                </>
+              )}
+
+              {activeTab === "cardio" && (
+                <>
+                  <div>
+                    <label className="block text-sm font-medium mb-1 text-slate-700">
+                      Cardio Type
+                    </label>
+                    <select
+                      value={newEntry.cardioType}
+                      onChange={(e) =>
+                        setNewEntry({ ...newEntry, cardioType: e.target.value })
+                      }
+                      className="w-full p-2 border rounded-lg"
+                    >
+                      <option value="">Select type</option>
+                      <option value="Running">Running</option>
+                      <option value="Walking">Walking</option>
+                      <option value="Cycling">Cycling</option>
+                      <option value="Elliptical">Elliptical</option>
+                      <option value="Rowing">Rowing</option>
+                      <option value="Stair Climber">Stair Climber</option>
+                      <option value="Swimming">Swimming</option>
+                      <option value="HIIT">HIIT</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1 text-slate-700">
+                      Duration (minutes)
+                    </label>
+                    <input
+                      type="number"
+                      value={newEntry.duration}
+                      onChange={(e) =>
+                        setNewEntry({ ...newEntry, duration: e.target.value })
+                      }
+                      placeholder="e.g. 30"
+                      className="w-full p-2 border rounded-lg"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-1 text-slate-700">
+                      Distance (miles/km)
+                    </label>
+                    <input
+                      type="number"
+                      step="0.1"
+                      value={newEntry.distance}
+                      onChange={(e) =>
+                        setNewEntry({ ...newEntry, distance: e.target.value })
+                      }
+                      placeholder="e.g. 2.5"
+                      className="w-full p-2 border rounded-lg"
+                    />
+                  </div>
+                </>
+              )}
             </div>
 
             <button
@@ -660,7 +804,239 @@ export default function WorkoutTracker() {
               Progress History
             </h2>
 
-            {/* Existing table rendering for each tab... */}
+            {activeTab === "lifts" && (
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-slate-200">
+                  <thead className="bg-slate-100">
+                    <tr>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Date
+                      </th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Exercise
+                      </th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Weight
+                      </th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Reps
+                      </th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-slate-200">
+                    {progressData.lifts.length === 0 ? (
+                      <tr>
+                        <td
+                          colSpan="5"
+                          className="px-4 py-4 text-center text-slate-500"
+                        >
+                          No lift data recorded yet
+                        </td>
+                      </tr>
+                    ) : (
+                      [...progressData.lifts]
+                        .sort((a, b) => new Date(b.date) - new Date(a.date))
+                        .map((entry) => (
+                          <tr key={entry.id} className="hover:bg-slate-50">
+                            <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-700">
+                              {new Date(entry.date).toLocaleDateString()}
+                            </td>
+                            <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-700">
+                              {entry.exercise}
+                            </td>
+                            <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-700">
+                              {entry.weight}
+                            </td>
+                            <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-700">
+                              {entry.reps || "-"}
+                            </td>
+                            <td className="px-4 py-2 whitespace-nowrap text-sm">
+                              <button
+                                onClick={() =>
+                                  deleteProgressEntry("lifts", entry.id)
+                                }
+                                className="text-red-500 hover:text-red-700"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                  />
+                                </svg>
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {activeTab === "measurements" && (
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-slate-200">
+                  <thead className="bg-slate-100">
+                    <tr>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Date
+                      </th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Measurement
+                      </th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Value
+                      </th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-slate-200">
+                    {progressData.measurements.length === 0 ? (
+                      <tr>
+                        <td
+                          colSpan="4"
+                          className="px-4 py-4 text-center text-slate-500"
+                        >
+                          No measurement data recorded yet
+                        </td>
+                      </tr>
+                    ) : (
+                      [...progressData.measurements]
+                        .sort((a, b) => new Date(b.date) - new Date(a.date))
+                        .map((entry) => (
+                          <tr key={entry.id} className="hover:bg-slate-50">
+                            <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-700">
+                              {new Date(entry.date).toLocaleDateString()}
+                            </td>
+                            <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-700">
+                              {entry.type}
+                            </td>
+                            <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-700">
+                              {entry.value}
+                            </td>
+                            <td className="px-4 py-2 whitespace-nowrap text-sm">
+                              <button
+                                onClick={() =>
+                                  deleteProgressEntry("measurements", entry.id)
+                                }
+                                className="text-red-500 hover:text-red-700"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                  />
+                                </svg>
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {activeTab === "cardio" && (
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-slate-200">
+                  <thead className="bg-slate-100">
+                    <tr>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Date
+                      </th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Type
+                      </th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Duration
+                      </th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Distance
+                      </th>
+                      <th className="px-4 py-2 text-left text-xs font-medium text-slate-700 uppercase tracking-wider">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-slate-200">
+                    {progressData.cardio.length === 0 ? (
+                      <tr>
+                        <td
+                          colSpan="5"
+                          className="px-4 py-4 text-center text-slate-500"
+                        >
+                          No cardio data recorded yet
+                        </td>
+                      </tr>
+                    ) : (
+                      [...progressData.cardio]
+                        .sort((a, b) => new Date(b.date) - new Date(a.date))
+                        .map((entry) => (
+                          <tr key={entry.id} className="hover:bg-slate-50">
+                            <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-700">
+                              {new Date(entry.date).toLocaleDateString()}
+                            </td>
+                            <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-700">
+                              {entry.type}
+                            </td>
+                            <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-700">
+                              {entry.duration ? `${entry.duration} min` : "-"}
+                            </td>
+                            <td className="px-4 py-2 whitespace-nowrap text-sm text-slate-700">
+                              {entry.distance ? `${entry.distance} mi/km` : "-"}
+                            </td>
+                            <td className="px-4 py-2 whitespace-nowrap text-sm">
+                              <button
+                                onClick={() =>
+                                  deleteProgressEntry("cardio", entry.id)
+                                }
+                                className="text-red-500 hover:text-red-700"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-5 w-5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                  />
+                                </svg>
+                              </button>
+                            </td>
+                          </tr>
+                        ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </div>
       </div>
