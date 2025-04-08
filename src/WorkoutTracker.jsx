@@ -4,6 +4,67 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { WORKOUT_PLAN_FULL } from "./workoutData.js";
 import { EXERCISE_GUIDE_FULL } from "./exerciseData.js";
 
+// Define NotesModal outside the main component
+const NotesModal = ({
+  noteModal,
+  noteContent,
+  setNoteContent,
+  saveExerciseNote,
+  setNoteModal,
+}) => {
+  if (!noteModal.show) return null;
+
+  const title = noteModal.isGroup
+    ? `Add note for ${noteModal.groupKey.split("-").slice(1).join(" ")}`
+    : `Add note for ${noteModal.exercise}`;
+
+  const handleContentClick = (e) => {
+    e.stopPropagation();
+  };
+
+  const handleNoteChange = (e) => {
+    setNoteContent(e.target.value);
+  };
+
+  const handleCancel = () => {
+    setNoteModal((prev) => ({ ...prev, show: false }));
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 animate-fadeIn">
+      <div
+        className="bg-white rounded-xl shadow-lg p-6 max-w-lg w-full"
+        onClick={handleContentClick}
+      >
+        <h3 className="text-xl font-bold mb-3 text-indigo-600">{title}</h3>
+        <p className="mb-3 text-slate-700">
+          Add an optional note (e.g., weight, reps, or other details)
+        </p>
+        <textarea
+          value={noteContent}
+          onChange={handleNoteChange}
+          className="w-full p-3 border rounded-lg mb-4 h-24 resize-none focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300"
+          placeholder="e.g., 135lbs x 8 reps"
+        />
+        <div className="flex justify-end space-x-3">
+          <button
+            onClick={handleCancel}
+            className="px-4 py-2 border border-slate-300 rounded-lg text-slate-700 hover:bg-slate-50"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={saveExerciseNote}
+            className="px-4 py-2 btn btn-primary rounded-lg"
+          >
+            Save & Mark Complete
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function WorkoutTracker() {
   const [completed, setCompleted] = useState({});
   const [view, setView] = useState("workouts");
@@ -27,11 +88,17 @@ export default function WorkoutTracker() {
     duration: "",
     distance: "",
   });
+  const [noteModal, setNoteModal] = useState({
+    show: false,
+    week: "",
+    exercise: "",
+    isGroup: false,
+    groupKey: "",
+  });
+  const [noteContent, setNoteContent] = useState("");
 
-  // Add a ref to track if data has been loaded
   const dataLoaded = useRef(false);
 
-  // Header component for consistent navigation
   const Header = () => (
     <div className="mb-6">
       <h1 className="text-2xl font-bold text-center mb-4 text-indigo-600">
@@ -92,33 +159,31 @@ export default function WorkoutTracker() {
     </div>
   );
 
-  // Load data once on mount
   useEffect(() => {
-    // Prevent multiple loading of data
     if (dataLoaded.current) return;
 
-    // Mark data as loaded at the beginning
     dataLoaded.current = true;
 
-    // Load completed state
     try {
       const stored = localStorage.getItem("workoutProgress");
       if (stored) {
         const parsedData = JSON.parse(stored);
         const twelveWeeksAgo = Date.now() - 12 * 7 * 24 * 60 * 60 * 1000;
+
         const cleanedData = Object.fromEntries(
-          Object.entries(parsedData).filter(
-            ([_, timestamp]) => timestamp > twelveWeeksAgo
-          )
+          Object.entries(parsedData).filter(([_, value]) => {
+            const timestamp =
+              typeof value === "object" ? value.timestamp : value;
+            return timestamp > twelveWeeksAgo;
+          })
         );
         setCompleted(cleanedData);
       }
     } catch (error) {
       console.error("Error loading workout progress:", error);
-      localStorage.removeItem("workoutProgress"); // Clear only if corrupted
+      localStorage.removeItem("workoutProgress");
     }
 
-    // Load expanded state
     try {
       const storedExpanded = localStorage.getItem("expandedWeeks");
       if (storedExpanded) {
@@ -129,12 +194,11 @@ export default function WorkoutTracker() {
       }
     } catch (error) {
       console.error("Error loading expanded weeks:", error);
-      localStorage.removeItem("expandedWeeks"); // Clear only if corrupted
+      localStorage.removeItem("expandedWeeks");
       const firstWeek = Object.keys(WORKOUT_PLAN_FULL)[0];
-      setExpandedWeeks({ [firstWeek]: true }); // Reset to default
+      setExpandedWeeks({ [firstWeek]: true });
     }
 
-    // Load progress data
     try {
       const storedProgress = localStorage.getItem("progressData");
       if (storedProgress) {
@@ -155,8 +219,7 @@ export default function WorkoutTracker() {
       }
     } catch (error) {
       console.error("Error loading or parsing progress data:", error);
-      localStorage.removeItem("progressData"); // Clear only if corrupted
-      // Initialize with empty arrays if data is corrupted or missing
+      localStorage.removeItem("progressData");
       setProgressData({
         lifts: [],
         measurements: [],
@@ -165,7 +228,6 @@ export default function WorkoutTracker() {
     }
   }, []);
 
-  // Debounced save to localStorage
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       try {
@@ -177,7 +239,6 @@ export default function WorkoutTracker() {
     return () => clearTimeout(timeoutId);
   }, [completed]);
 
-  // Save expanded state to localStorage
   useEffect(() => {
     try {
       localStorage.setItem("expandedWeeks", JSON.stringify(expandedWeeks));
@@ -186,7 +247,6 @@ export default function WorkoutTracker() {
     }
   }, [expandedWeeks]);
 
-  // Save progress data to localStorage
   useEffect(() => {
     try {
       localStorage.setItem("progressData", JSON.stringify(progressData));
@@ -195,33 +255,68 @@ export default function WorkoutTracker() {
     }
   }, [progressData]);
 
-  const toggleExercise = useCallback((week, exercise) => {
-    const key = `${week}-${exercise}`;
+  const toggleExercise = useCallback(
+    (week, exercise) => {
+      const key = `${week}-${exercise}`;
+
+      if (completed[key]) {
+        setCompleted((prev) => {
+          const newCompleted = { ...prev };
+          delete newCompleted[key];
+          return newCompleted;
+        });
+      } else {
+        setNoteContent(""); // Reset note content
+        setNoteModal({
+          show: true,
+          week,
+          exercise,
+          isGroup: false,
+          groupKey: key,
+        });
+      }
+    },
+    [completed]
+  );
+
+  const saveExerciseNote = useCallback(() => {
+    const { week, exercise, isGroup, groupKey } = noteModal;
+    const key = isGroup ? groupKey : `${week}-${exercise}`;
+
     setCompleted((prev) => {
       const newCompleted = { ...prev };
-      if (newCompleted[key]) {
-        delete newCompleted[key]; // Use delete for unmarking individual items
-      } else {
-        newCompleted[key] = Date.now();
-      }
+      newCompleted[key] = {
+        timestamp: Date.now(),
+        note: noteContent.trim(),
+      };
       return newCompleted;
     });
-  }, []);
 
-  // Function to toggle completion for an entire group
-  const toggleGroup = useCallback((groupKey) => {
-    setCompleted((prev) => {
-      const newCompleted = { ...prev };
-      if (newCompleted[groupKey]) {
-        delete newCompleted[groupKey]; // Use delete for unmarking groups
+    setNoteModal((prev) => ({ ...prev, show: false }));
+  }, [noteModal, noteContent]);
+
+  const toggleGroup = useCallback(
+    (groupKey) => {
+      if (completed[groupKey]) {
+        setCompleted((prev) => {
+          const newCompleted = { ...prev };
+          delete newCompleted[groupKey];
+          return newCompleted;
+        });
       } else {
-        newCompleted[groupKey] = Date.now();
+        setNoteContent(""); // Reset note content
+        setNoteModal({
+          show: true,
+          week: "",
+          exercise: "",
+          isGroup: true,
+          groupKey,
+        });
       }
-      return newCompleted;
-    });
-  }, []);
+    },
+    [completed]
+  );
 
-  // Toggle week expansion
   const toggleWeekExpansion = useCallback((week) => {
     setExpandedWeeks((prev) => ({
       ...prev,
@@ -230,7 +325,6 @@ export default function WorkoutTracker() {
   }, []);
 
   const showDetails = useCallback((exercise) => {
-    // Check if it's a warm-up or cool-down
     if (exercise.startsWith("Warm-Up:") || exercise.startsWith("Cool-Down:")) {
       setModalContent({
         title: exercise.split(":")[0].trim(),
@@ -240,7 +334,6 @@ export default function WorkoutTracker() {
       return;
     }
 
-    // For cardio exercises with duration
     if (
       exercise.match(
         /(Elliptical|Treadmill|Row|Walk|Run).*(min|ladder|pyramid|intervals)/i
@@ -254,27 +347,24 @@ export default function WorkoutTracker() {
       return;
     }
 
-    // Extract the base exercise name (remove sets/reps and parenthetical notes)
     const baseExercise = exercise
-      .replace(/\s*\d+x\d+.*$/, "") // Remove sets/reps
-      .replace(/\s*\([^)]*\)/g, "") // Remove parenthetical notes
-      .replace(/\s+ea$/, "") // Remove "ea" suffix
+      .replace(/\s*\d+x\d+.*$/, "")
+      .replace(/\s*\([^)]*\)/g, "")
+      .replace(/\s+ea$/, "")
       .split(" ")
-      .filter((word) => !word.match(/^[0-9]+$/)) // Remove standalone numbers
+      .filter((word) => !word.match(/^[0-9]+$/))
       .join(" ")
       .trim();
 
-    // Try different name variations
     const variations = [
       baseExercise,
-      baseExercise.replace(/^DB\s+/, ""), // Try without "DB" prefix
-      baseExercise.replace(/^Barbell\s+/, ""), // Try without "Barbell" prefix
+      baseExercise.replace(/^DB\s+/, ""),
+      baseExercise.replace(/^Barbell\s+/, ""),
       ...baseExercise
         .split(" ")
         .map((_, i) => baseExercise.split(" ").slice(i).join(" ")),
     ];
 
-    // Find the first matching exercise in our guide
     const match = variations.find((v) => EXERCISE_GUIDE_FULL[v]);
     if (match && EXERCISE_GUIDE_FULL[match]) {
       const setsReps = exercise.match(/\d+x\d+/)?.[0] || "";
@@ -294,7 +384,6 @@ export default function WorkoutTracker() {
         isExercise: true,
       });
     } else {
-      // For exercises without a guide entry, show the exercise as is
       setModalContent({
         title: baseExercise,
         description:
@@ -307,10 +396,8 @@ export default function WorkoutTracker() {
     }
   }, []);
 
-  // Function to check if all exercises in a week are completed
   const isWeekCompleted = useCallback(
     (week, exercises) => {
-      // Check all individual exercises
       const individualExercises = exercises.filter(
         (ex) => !ex.match(/^(Superset|Tri-Set|Complex)\s+(\d+)[A-Z]:/i)
       );
@@ -318,7 +405,6 @@ export default function WorkoutTracker() {
         (ex) => completed[`${week}-${ex}`]
       );
 
-      // Check all exercise groups
       const groups = new Set();
       exercises.forEach((ex) => {
         const match = ex.match(/^(Superset|Tri-Set|Complex)\s+(\d+)[A-Z]:/i);
@@ -331,17 +417,15 @@ export default function WorkoutTracker() {
         (groupKey) => completed[groupKey]
       );
 
-      // Week is completed if all individual exercises and all groups are completed
       return (
         allIndividualCompleted &&
         allGroupsCompleted &&
         (individualExercises.length > 0 || groups.size > 0)
-      ); // Ensure there are exercises to check
+      );
     },
     [completed]
   );
 
-  // Update the renderExercises function to use the new design
   const renderExercises = (week, exercises) => {
     const renderedElements = [];
     let i = 0;
@@ -358,7 +442,6 @@ export default function WorkoutTracker() {
         const groupItems = [];
         const exercisesInGroup = [];
 
-        // Find all items in this group
         while (
           i < exercises.length &&
           exercises[i].match(
@@ -384,7 +467,6 @@ export default function WorkoutTracker() {
           i++;
         }
 
-        // Add the group container with a single button
         renderedElements.push(
           <div
             key={groupKey}
@@ -422,134 +504,69 @@ export default function WorkoutTracker() {
               </button>
             </div>
             <div className="space-y-1">{groupItems}</div>
+            {completed[groupKey] && completed[groupKey].note && (
+              <div className="mt-2 p-2 bg-yellow-50 rounded-lg text-sm text-slate-700 border border-yellow-200">
+                <span className="font-medium">Note:</span>{" "}
+                {completed[groupKey].note}
+              </div>
+            )}
           </div>
         );
       } else {
-        // Render individual exercise with improved styling
         const key = `${week}-${ex}`;
+        const exerciseData = completed[key];
         renderedElements.push(
           <div
             key={key}
-            className={`flex items-center justify-between p-3 rounded-lg shadow transition hover:shadow-md ${
-              completed[key] ? "bg-green-100" : "bg-white"
+            className={`flex flex-col p-3 rounded-lg shadow transition hover:shadow-md ${
+              exerciseData ? "bg-green-100" : "bg-white"
             }`}
           >
-            <span
-              onClick={() => showDetails(ex)}
-              className="cursor-pointer hover:text-indigo-600 flex-1 mr-2"
-            >
-              {ex}
-            </span>
-            <button
-              onClick={() => toggleExercise(week, ex)}
-              className={`px-3 py-1 rounded-lg flex-shrink-0 flex items-center ${
-                completed[key] ? "btn btn-success" : "btn btn-primary"
-              }`}
-            >
-              {completed[key] ? (
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 mr-1"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 01-1.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Done
-                </span>
-              ) : (
-                "Mark Done"
-              )}
-            </button>
+            <div className="flex items-center justify-between">
+              <span
+                onClick={() => showDetails(ex)}
+                className="cursor-pointer hover:text-indigo-600 flex-1 mr-2"
+              >
+                {ex}
+              </span>
+              <button
+                onClick={() => toggleExercise(week, ex)}
+                className={`px-3 py-1 rounded-lg flex-shrink-0 flex items-center ${
+                  exerciseData ? "btn btn-success" : "btn btn-primary"
+                }`}
+              >
+                {exerciseData ? (
+                  <span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 mr-1"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    Done
+                  </span>
+                ) : (
+                  "Mark Done"
+                )}
+              </button>
+            </div>
+            {exerciseData && exerciseData.note && (
+              <div className="mt-2 p-2 bg-yellow-50 rounded-lg text-sm text-slate-700 border border-yellow-200">
+                <span className="font-medium">Note:</span> {exerciseData.note}
+              </div>
+            )}
           </div>
         );
         i++;
       }
     }
     return renderedElements;
-  };
-
-  // Function to add a new progress entry
-  const addProgressEntry = (type) => {
-    if (type === "lifts" && (!newEntry.lift || !newEntry.weight)) {
-      alert("Please fill in all required fields");
-      return;
-    } else if (
-      type === "measurements" &&
-      (!newEntry.measurement || !newEntry.value)
-    ) {
-      alert("Please fill in all required fields");
-      return;
-    } else if (
-      type === "cardio" &&
-      (!newEntry.cardioType || !(newEntry.duration || newEntry.distance))
-    ) {
-      alert("Please fill in all required fields");
-      return;
-    }
-
-    setProgressData((prev) => {
-      const updatedData = { ...prev };
-
-      if (type === "lifts") {
-        updatedData.lifts = [
-          ...updatedData.lifts,
-          {
-            id: Date.now(),
-            date: newEntry.date,
-            exercise: newEntry.lift,
-            weight: parseFloat(newEntry.weight),
-            reps: newEntry.reps ? parseInt(newEntry.reps) : null,
-          },
-        ];
-        setNewEntry((prev) => ({ ...prev, lift: "", weight: "", reps: "" }));
-      } else if (type === "measurements") {
-        updatedData.measurements = [
-          ...updatedData.measurements,
-          {
-            id: Date.now(),
-            date: newEntry.date,
-            type: newEntry.measurement,
-            value: parseFloat(newEntry.value),
-          },
-        ];
-        setNewEntry((prev) => ({ ...prev, measurement: "", value: "" }));
-      } else if (type === "cardio") {
-        updatedData.cardio = [
-          ...updatedData.cardio,
-          {
-            id: Date.now(),
-            date: newEntry.date,
-            type: newEntry.cardioType,
-            duration: newEntry.duration ? parseFloat(newEntry.duration) : null,
-            distance: newEntry.distance ? parseFloat(newEntry.distance) : null,
-          },
-        ];
-        setNewEntry((prev) => ({
-          ...prev,
-          cardioType: "",
-          duration: "",
-          distance: "",
-        }));
-      }
-
-      return updatedData;
-    });
-  };
-
-  // Function to delete progress entry
-  const deleteProgressEntry = (type, id) => {
-    setProgressData((prev) => {
-      const updatedData = { ...prev };
-      updatedData[type] = updatedData[type].filter((entry) => entry.id !== id);
-
-      return updatedData;
-    });
   };
 
   if (view === "progress") {
@@ -1074,7 +1091,7 @@ export default function WorkoutTracker() {
                   >
                     <path
                       fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 001.414 0l4-4z"
                       clipRule="evenodd"
                     />
                   </svg>
@@ -1094,7 +1111,7 @@ export default function WorkoutTracker() {
                 >
                   <path
                     fillRule="evenodd"
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 011.414-1.414l4 4a1 1 010 1.414l-4 4a1 1 01-1.414 0z"
                     clipRule="evenodd"
                   />
                 </svg>
@@ -1131,7 +1148,7 @@ export default function WorkoutTracker() {
                   >
                     <path
                       fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      d="M10 18a8 8 0 100-16 8 8 000 16zm3.707-9.293a1 1 00-1.414-1.414L9 10.586 7.707 9.293a1 1 00-1.414 1.414l2 2a1 1 001.414 0l4-4z"
                       clipRule="evenodd"
                     />
                   </svg>
@@ -1158,7 +1175,7 @@ export default function WorkoutTracker() {
               >
                 <path
                   fillRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 011.414 1.414L11.414 10l4.293 4.293a1 1 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 01-1.414-1.414L8.586 10 4.293 5.707a1 1 010-1.414z"
                   clipRule="evenodd"
                 />
               </svg>
@@ -1211,7 +1228,7 @@ export default function WorkoutTracker() {
               >
                 <path
                   fillRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 011.414 1.414L11.414 10l4.293 4.293a1 1 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 01-1.414-1.414L8.586 10 4.293 5.707a1 1 010-1.414z"
                   clipRule="evenodd"
                 />
               </svg>
@@ -1220,6 +1237,14 @@ export default function WorkoutTracker() {
           </div>
         </div>
       )}
+
+      <NotesModal
+        noteModal={noteModal}
+        noteContent={noteContent}
+        setNoteContent={setNoteContent}
+        saveExerciseNote={saveExerciseNote}
+        setNoteModal={setNoteModal}
+      />
     </div>
   );
 }
