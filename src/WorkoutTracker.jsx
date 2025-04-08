@@ -1,5 +1,5 @@
 // Full PWA: 12-week fat loss tracker with warm-up, cool-down, workout, reference guide, and progress log
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 import { WORKOUT_PLAN_FULL } from "./workoutData.js";
 import { EXERCISE_GUIDE_FULL } from "./exerciseData.js";
@@ -10,14 +10,40 @@ export default function WorkoutTracker() {
   const [modalContent, setModalContent] = useState(null);
   const [showGuide, setShowGuide] = useState(false);
   const [expandedWeeks, setExpandedWeeks] = useState({});
+  const [progressData, setProgressData] = useState({
+    lifts: [],
+    measurements: [],
+    cardio: [],
+  });
+  const [activeTab, setActiveTab] = useState("lifts");
+  const [newEntry, setNewEntry] = useState({
+    date: new Date().toISOString().split("T")[0],
+    lift: "",
+    weight: "",
+    reps: "",
+    measurement: "",
+    value: "",
+    cardioType: "",
+    duration: "",
+    distance: "",
+  });
+
+  // Add a ref to track if data has been loaded
+  const dataLoaded = useRef(false);
 
   // Load data once on mount
   useEffect(() => {
+    // Prevent multiple loading of data
+    if (dataLoaded.current) return;
+
+    // Mark data as loaded at the beginning
+    dataLoaded.current = true;
+
+    // Load completed state
     try {
       const stored = localStorage.getItem("workoutProgress");
       if (stored) {
         const parsedData = JSON.parse(stored);
-        // Clean up old data (older than 12 weeks)
         const twelveWeeksAgo = Date.now() - 12 * 7 * 24 * 60 * 60 * 1000;
         const cleanedData = Object.fromEntries(
           Object.entries(parsedData).filter(
@@ -26,21 +52,55 @@ export default function WorkoutTracker() {
         );
         setCompleted(cleanedData);
       }
+    } catch (error) {
+      console.error("Error loading workout progress:", error);
+      localStorage.removeItem("workoutProgress"); // Clear only if corrupted
+    }
 
-      // Load expanded state from localStorage
+    // Load expanded state
+    try {
       const storedExpanded = localStorage.getItem("expandedWeeks");
       if (storedExpanded) {
         setExpandedWeeks(JSON.parse(storedExpanded));
       } else {
-        // By default, expand only the first week
         const firstWeek = Object.keys(WORKOUT_PLAN_FULL)[0];
         setExpandedWeeks({ [firstWeek]: true });
       }
     } catch (error) {
-      console.error("Error loading data:", error);
-      // Reset if data is corrupted
-      localStorage.removeItem("workoutProgress");
-      localStorage.removeItem("expandedWeeks");
+      console.error("Error loading expanded weeks:", error);
+      localStorage.removeItem("expandedWeeks"); // Clear only if corrupted
+      const firstWeek = Object.keys(WORKOUT_PLAN_FULL)[0];
+      setExpandedWeeks({ [firstWeek]: true }); // Reset to default
+    }
+
+    // Load progress data
+    try {
+      const storedProgress = localStorage.getItem("progressData");
+      if (storedProgress) {
+        const parsedProgress = JSON.parse(storedProgress);
+        const validProgress = {
+          lifts: Array.isArray(parsedProgress.lifts)
+            ? parsedProgress.lifts
+            : [],
+          measurements: Array.isArray(parsedProgress.measurements)
+            ? parsedProgress.measurements
+            : [],
+          cardio: Array.isArray(parsedProgress.cardio)
+            ? parsedProgress.cardio
+            : [],
+        };
+        setProgressData(validProgress);
+        console.log("Loaded progress data:", validProgress);
+      }
+    } catch (error) {
+      console.error("Error loading or parsing progress data:", error);
+      localStorage.removeItem("progressData"); // Clear only if corrupted
+      // Initialize with empty arrays if data is corrupted or missing
+      setProgressData({
+        lifts: [],
+        measurements: [],
+        cardio: [],
+      });
     }
   }, []);
 
@@ -64,6 +124,15 @@ export default function WorkoutTracker() {
       console.error("Error saving expanded state:", error);
     }
   }, [expandedWeeks]);
+
+  // Save progress data to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem("progressData", JSON.stringify(progressData));
+    } catch (error) {
+      console.error("Error saving progress data:", error);
+    }
+  }, [progressData]);
 
   const toggleExercise = useCallback((week, exercise) => {
     const key = `${week}-${exercise}`;
@@ -304,20 +373,437 @@ export default function WorkoutTracker() {
     return renderedElements;
   };
 
+  // Function to add a new progress entry
+  const addProgressEntry = (type) => {
+    if (type === "lifts" && (!newEntry.lift || !newEntry.weight)) {
+      alert("Please fill in all required fields");
+      return;
+    } else if (
+      type === "measurements" &&
+      (!newEntry.measurement || !newEntry.value)
+    ) {
+      alert("Please fill in all required fields");
+      return;
+    } else if (
+      type === "cardio" &&
+      (!newEntry.cardioType || !(newEntry.duration || newEntry.distance))
+    ) {
+      alert("Please fill in all required fields");
+      return;
+    }
+
+    setProgressData((prev) => {
+      const updatedData = { ...prev };
+
+      if (type === "lifts") {
+        updatedData.lifts = [
+          ...updatedData.lifts,
+          {
+            id: Date.now(),
+            date: newEntry.date,
+            exercise: newEntry.lift,
+            weight: parseFloat(newEntry.weight),
+            reps: newEntry.reps ? parseInt(newEntry.reps) : null,
+          },
+        ];
+        setNewEntry((prev) => ({ ...prev, lift: "", weight: "", reps: "" }));
+      } else if (type === "measurements") {
+        updatedData.measurements = [
+          ...updatedData.measurements,
+          {
+            id: Date.now(),
+            date: newEntry.date,
+            type: newEntry.measurement,
+            value: parseFloat(newEntry.value),
+          },
+        ];
+        setNewEntry((prev) => ({ ...prev, measurement: "", value: "" }));
+      } else if (type === "cardio") {
+        updatedData.cardio = [
+          ...updatedData.cardio,
+          {
+            id: Date.now(),
+            date: newEntry.date,
+            type: newEntry.cardioType,
+            duration: newEntry.duration ? parseFloat(newEntry.duration) : null,
+            distance: newEntry.distance ? parseFloat(newEntry.distance) : null,
+          },
+        ];
+        setNewEntry((prev) => ({
+          ...prev,
+          cardioType: "",
+          duration: "",
+          distance: "",
+        }));
+      }
+
+      return updatedData;
+    });
+  };
+
+  // Function to delete progress entry
+  const deleteProgressEntry = (type, id) => {
+    setProgressData((prev) => {
+      const updatedData = { ...prev };
+      updatedData[type] = updatedData[type].filter((entry) => entry.id !== id);
+
+      return updatedData;
+    });
+  };
+
   if (view === "progress") {
     return (
-      <div className="p-4">
+      <div className="p-4 max-w-3xl mx-auto">
         <h1 className="text-xl font-bold mb-4">Progress Log</h1>
-        <p className="mb-2">
-          Track your lifts, cardio, or measurements weekly in the notebook or
-          another app.
-        </p>
-        <ul className="list-disc list-inside mb-4">
-          <li>Record Squat / Bench / Deadlift weekly</li>
-          <li>Log cardio distance or speed progression</li>
-          <li>Note bodyweight or waist size weekly</li>
-          <li>Use progress photos every 4 weeks</li>
-        </ul>
+
+        <div className="mb-4 flex border-b">
+          <button
+            className={`py-2 px-4 ${
+              activeTab === "lifts"
+                ? "border-b-2 border-blue-500 font-bold"
+                : ""
+            }`}
+            onClick={() => setActiveTab("lifts")}
+          >
+            Lifts
+          </button>
+          <button
+            className={`py-2 px-4 ${
+              activeTab === "measurements"
+                ? "border-b-2 border-blue-500 font-bold"
+                : ""
+            }`}
+            onClick={() => setActiveTab("measurements")}
+          >
+            Measurements
+          </button>
+          <button
+            className={`py-2 px-4 ${
+              activeTab === "cardio"
+                ? "border-b-2 border-blue-500 font-bold"
+                : ""
+            }`}
+            onClick={() => setActiveTab("cardio")}
+          >
+            Cardio
+          </button>
+        </div>
+
+        <div className="mb-6 p-4 bg-gray-50 rounded-lg shadow">
+          <h2 className="font-bold mb-3">Add New Entry</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label className="block text-sm font-medium mb-1">Date</label>
+              <input
+                type="date"
+                value={newEntry.date}
+                onChange={(e) =>
+                  setNewEntry({ ...newEntry, date: e.target.value })
+                }
+                className="w-full p-2 border rounded"
+              />
+            </div>
+
+            {activeTab === "lifts" && (
+              <>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Exercise
+                  </label>
+                  <select
+                    value={newEntry.lift}
+                    onChange={(e) =>
+                      setNewEntry({ ...newEntry, lift: e.target.value })
+                    }
+                    className="w-full p-2 border rounded"
+                  >
+                    <option value="">Select Exercise</option>
+                    <option value="Squat">Squat</option>
+                    <option value="Bench Press">Bench Press</option>
+                    <option value="Deadlift">Deadlift</option>
+                    <option value="Overhead Press">Overhead Press</option>
+                    <option value="Barbell Row">Barbell Row</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Weight (lbs/kg)
+                  </label>
+                  <input
+                    type="number"
+                    value={newEntry.weight}
+                    onChange={(e) =>
+                      setNewEntry({ ...newEntry, weight: e.target.value })
+                    }
+                    className="w-full p-2 border rounded"
+                    placeholder="Weight"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Reps (optional)
+                  </label>
+                  <input
+                    type="number"
+                    value={newEntry.reps}
+                    onChange={(e) =>
+                      setNewEntry({ ...newEntry, reps: e.target.value })
+                    }
+                    className="w-full p-2 border rounded"
+                    placeholder="Reps"
+                  />
+                </div>
+              </>
+            )}
+
+            {activeTab === "measurements" && (
+              <>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Measurement Type
+                  </label>
+                  <select
+                    value={newEntry.measurement}
+                    onChange={(e) =>
+                      setNewEntry({ ...newEntry, measurement: e.target.value })
+                    }
+                    className="w-full p-2 border rounded"
+                  >
+                    <option value="">Select Type</option>
+                    <option value="Weight">Body Weight</option>
+                    <option value="Waist">Waist</option>
+                    <option value="Chest">Chest</option>
+                    <option value="Arms">Arms</option>
+                    <option value="Thighs">Thighs</option>
+                    <option value="Body Fat %">Body Fat %</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Value
+                  </label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={newEntry.value}
+                    onChange={(e) =>
+                      setNewEntry({ ...newEntry, value: e.target.value })
+                    }
+                    className="w-full p-2 border rounded"
+                    placeholder="Value"
+                  />
+                </div>
+              </>
+            )}
+
+            {activeTab === "cardio" && (
+              <>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Cardio Type
+                  </label>
+                  <select
+                    value={newEntry.cardioType}
+                    onChange={(e) =>
+                      setNewEntry({ ...newEntry, cardioType: e.target.value })
+                    }
+                    className="w-full p-2 border rounded"
+                  >
+                    <option value="">Select Type</option>
+                    <option value="Running">Running</option>
+                    <option value="Walking">Walking</option>
+                    <option value="Cycling">Cycling</option>
+                    <option value="Elliptical">Elliptical</option>
+                    <option value="Rowing">Rowing</option>
+                    <option value="Swimming">Swimming</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Duration (minutes)
+                  </label>
+                  <input
+                    type="number"
+                    value={newEntry.duration}
+                    onChange={(e) =>
+                      setNewEntry({ ...newEntry, duration: e.target.value })
+                    }
+                    className="w-full p-2 border rounded"
+                    placeholder="Minutes"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1">
+                    Distance (km/miles)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    value={newEntry.distance}
+                    onChange={(e) =>
+                      setNewEntry({ ...newEntry, distance: e.target.value })
+                    }
+                    className="w-full p-2 border rounded"
+                    placeholder="Distance"
+                  />
+                </div>
+              </>
+            )}
+          </div>
+
+          <button
+            onClick={() => addProgressEntry(activeTab)}
+            className="px-4 py-2 btn btn-primary rounded"
+          >
+            Add Entry
+          </button>
+        </div>
+
+        <div className="mb-6">
+          <h2 className="font-bold mb-3">Progress History</h2>
+
+          {activeTab === "lifts" && (
+            <div className="overflow-x-auto">
+              {progressData.lifts.length === 0 ? (
+                <p className="text-gray-500">No lift data recorded yet.</p>
+              ) : (
+                <table className="min-w-full bg-white border">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="py-2 px-4 border">Date</th>
+                      <th className="py-2 px-4 border">Exercise</th>
+                      <th className="py-2 px-4 border">Weight</th>
+                      <th className="py-2 px-4 border">Reps</th>
+                      <th className="py-2 px-4 border">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...progressData.lifts]
+                      .sort((a, b) => new Date(b.date) - new Date(a.date))
+                      .map((entry) => (
+                        <tr key={entry.id} className="hover:bg-gray-50">
+                          <td className="py-2 px-4 border">
+                            {new Date(entry.date).toLocaleDateString()}
+                          </td>
+                          <td className="py-2 px-4 border">{entry.exercise}</td>
+                          <td className="py-2 px-4 border">{entry.weight}</td>
+                          <td className="py-2 px-4 border">
+                            {entry.reps || "-"}
+                          </td>
+                          <td className="py-2 px-4 border">
+                            <button
+                              onClick={() =>
+                                deleteProgressEntry("lifts", entry.id)
+                              }
+                              className="text-red-500 hover:text-red-700"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          )}
+
+          {activeTab === "measurements" && (
+            <div className="overflow-x-auto">
+              {progressData.measurements.length === 0 ? (
+                <p className="text-gray-500">
+                  No measurement data recorded yet.
+                </p>
+              ) : (
+                <table className="min-w-full bg-white border">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="py-2 px-4 border">Date</th>
+                      <th className="py-2 px-4 border">Measurement</th>
+                      <th className="py-2 px-4 border">Value</th>
+                      <th className="py-2 px-4 border">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...progressData.measurements]
+                      .sort((a, b) => new Date(b.date) - new Date(a.date))
+                      .map((entry) => (
+                        <tr key={entry.id} className="hover:bg-gray-50">
+                          <td className="py-2 px-4 border">
+                            {new Date(entry.date).toLocaleDateString()}
+                          </td>
+                          <td className="py-2 px-4 border">{entry.type}</td>
+                          <td className="py-2 px-4 border">{entry.value}</td>
+                          <td className="py-2 px-4 border">
+                            <button
+                              onClick={() =>
+                                deleteProgressEntry("measurements", entry.id)
+                              }
+                              className="text-red-500 hover:text-red-700"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          )}
+
+          {activeTab === "cardio" && (
+            <div className="overflow-x-auto">
+              {progressData.cardio.length === 0 ? (
+                <p className="text-gray-500">No cardio data recorded yet.</p>
+              ) : (
+                <table className="min-w-full bg-white border">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="py-2 px-4 border">Date</th>
+                      <th className="py-2 px-4 border">Type</th>
+                      <th className="py-2 px-4 border">Duration</th>
+                      <th className="py-2 px-4 border">Distance</th>
+                      <th className="py-2 px-4 border">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...progressData.cardio]
+                      .sort((a, b) => new Date(b.date) - new Date(a.date))
+                      .map((entry) => (
+                        <tr key={entry.id} className="hover:bg-gray-50">
+                          <td className="py-2 px-4 border">
+                            {new Date(entry.date).toLocaleDateString()}
+                          </td>
+                          <td className="py-2 px-4 border">{entry.type}</td>
+                          <td className="py-2 px-4 border">
+                            {entry.duration || "-"} min
+                          </td>
+                          <td className="py-2 px-4 border">
+                            {entry.distance || "-"}
+                          </td>
+                          <td className="py-2 px-4 border">
+                            <button
+                              onClick={() =>
+                                deleteProgressEntry("cardio", entry.id)
+                              }
+                              className="text-red-500 hover:text-red-700"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          )}
+        </div>
+
         <button
           onClick={() => setView("workouts")}
           className="px-4 py-2 btn btn-primary rounded"
