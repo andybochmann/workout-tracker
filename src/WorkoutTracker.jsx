@@ -175,11 +175,17 @@ export default function WorkoutTracker() {
       if (stored) {
         const parsedData = JSON.parse(stored);
         const twelveWeeksAgo = Date.now() - 12 * 7 * 24 * 60 * 60 * 1000;
+
+        // Filter out old entries
+        // Handle both old format (value is timestamp) and new format (value is object with timestamp)
         const cleanedData = Object.fromEntries(
-          Object.entries(parsedData).filter(
-            ([_, timestamp]) => timestamp > twelveWeeksAgo
-          )
+          Object.entries(parsedData).filter(([_, value]) => {
+            const timestamp =
+              typeof value === "object" ? value.timestamp : value;
+            return timestamp > twelveWeeksAgo;
+          })
         );
+
         setCompleted(cleanedData);
       }
     } catch (error) {
@@ -979,7 +985,7 @@ export default function WorkoutTracker() {
                                 onClick={() =>
                                   deleteProgressEntry("lifts", entry.id)
                                 }
-                                className="text-red-500 hover:text-red-700"
+                                className="text-red-500 hover:text-red-700 inline-flex items-center"
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
