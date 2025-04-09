@@ -8,6 +8,9 @@ body {
   line-height: 1.5;
 }
 
+.block {
+  display: block;
+}
 /* Layout */
 .p-4 {
   padding: 1rem;

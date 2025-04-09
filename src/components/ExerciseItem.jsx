@@ -31,23 +31,26 @@ const ExerciseItem = ({
         exerciseData ? "bg-green-100" : "bg-white"
       }`}
     >
-      <div className="flex justify-between items-center w-full">
-        <div className="flex flex-col">
+      {" "}
+      <div className="flex justify-between items-start w-full">
+        <div>
           <span
             onClick={() => showDetails(exercise)}
-            className="cursor-pointer hover:text-indigo-600 font-medium"
+            className="cursor-pointer hover:text-indigo-600 font-medium block"
           >
             {exerciseTitle}
           </span>
           {executionDetails && (
-            <span className="text-sm text-gray-500">{executionDetails}</span>
+            <span className="text-sm text-gray-500 block">
+              {executionDetails}
+            </span>
           )}
           {exerciseNote && (
-            <span className="text-sm italic text-indigo-600 mt-1">
+            <span className="text-sm italic text-indigo-600 block">
               Note: {exerciseNote}
             </span>
           )}
-        </div>{" "}
+        </div>
         <button
           onClick={() => {
             if (exerciseData) {
