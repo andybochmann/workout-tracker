@@ -86,7 +86,7 @@ export default function WorkoutTracker() {
       if (storedExpanded) {
         setExpandedWeeks(JSON.parse(storedExpanded));
       } else {
-        const firstWeek = Object.keys(WORKOUT_PLAN_FULL)[0];
+        const firstWeek = Object.keys(WorkoutPlanData)[0];
         setExpandedWeeks({ [firstWeek]: true });
       }
     } catch (error) {
