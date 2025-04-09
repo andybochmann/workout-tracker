@@ -326,22 +326,47 @@ export default function WorkoutTracker() {
         groupedExercises[ex.group].includes(ex)
       ) {
         // Get all exercises in this group
-        const exercisesInThisGroup = groupedExercises[ex.group];
+        const exercisesInThisGroup = groupedExercises[ex.group]; // Create group items from grouped exercises
+        const groupItems = exercisesInThisGroup.map((groupEx) => {
+          // Generate key for this exercise and check if it's completed
+          const exerciseKey = `${week}-${groupEx.title}`;
+          const exerciseData = completed[exerciseKey]; // Get execution details, rest time, and note, similar to ExerciseItem component
+          const executionDetails = groupEx.execution ? groupEx.execution : "";
+          const restTime = groupEx.rest ? groupEx.rest : "";
+          const exerciseNote =
+            exerciseData && exerciseData.note ? exerciseData.note : null;
 
-        // Create group items from grouped exercises
-        const groupItems = exercisesInThisGroup.map((groupEx) => (
-          <div
-            key={`${week}-${groupEx.title}`}
-            className="flex items-center justify-between p-3 rounded-lg bg-white shadow transition hover:shadow-md mb-2"
-          >
-            <span
-              onClick={() => showDetails(groupEx)}
-              className="cursor-pointer hover:text-indigo-600 flex-1 mr-2"
+          return (
+            <div
+              key={exerciseKey}
+              className="flex flex-col p-3 rounded-lg bg-white shadow transition hover:shadow-md mb-2"
             >
-              {groupEx.title}
-            </span>
-          </div>
-        ));
+              <div className="flex justify-between items-start w-full">
+                <div>
+                  <span
+                    onClick={() => showDetails(groupEx)}
+                    className="cursor-pointer hover:text-indigo-600 font-medium block"
+                  >
+                    {groupEx.title}
+                  </span>{" "}
+                  {executionDetails && (
+                    <span className="text-sm text-gray-500 block">
+                      {executionDetails}
+                      {restTime && (
+                        <span className="ml-1">• Rest: {restTime}</span>
+                      )}
+                    </span>
+                  )}
+                  {exerciseNote && (
+                    <span className="text-sm italic text-indigo-600 block">
+                      Note: {exerciseNote}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          );
+        });
 
         // Determine the group type from the group name (e.g., "superset_1" -> "Superset")
         const groupType = ex.group.includes("superset")

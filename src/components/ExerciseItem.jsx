@@ -14,12 +14,15 @@ const ExerciseItem = ({
     typeof exercise === "object" ? exercise.title : exercise;
   const key = `${week}-${exerciseTitle}`;
   const exerciseData = completed[key];
-
   // Add execution details if available
   const executionDetails =
     typeof exercise === "object" && exercise.execution
       ? exercise.execution
       : "";
+
+  // Add rest time if available
+  const restTime =
+    typeof exercise === "object" && exercise.rest ? exercise.rest : "";
 
   // Get note if it exists
   const exerciseNote =
@@ -39,10 +42,11 @@ const ExerciseItem = ({
             className="cursor-pointer hover:text-indigo-600 font-medium block"
           >
             {exerciseTitle}
-          </span>
+          </span>{" "}
           {executionDetails && (
             <span className="text-sm text-gray-500 block">
               {executionDetails}
+              {restTime && <span className="ml-1">• Rest: {restTime}</span>}
             </span>
           )}
           {exerciseNote && (
