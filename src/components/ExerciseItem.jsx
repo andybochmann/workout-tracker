@@ -6,6 +6,8 @@ const ExerciseItem = ({
   completed,
   showDetails,
   toggleExercise,
+  setNoteModal,
+  setNoteContent,
 }) => {
   // Handle both old string format and new object format
   const exerciseTitle =
@@ -18,6 +20,10 @@ const ExerciseItem = ({
     typeof exercise === "object" && exercise.execution
       ? exercise.execution
       : "";
+
+  // Get note if it exists
+  const exerciseNote =
+    exerciseData && exerciseData.note ? exerciseData.note : null;
 
   return (
     <div
@@ -36,9 +42,30 @@ const ExerciseItem = ({
           {executionDetails && (
             <span className="text-sm text-gray-500">{executionDetails}</span>
           )}
-        </div>
+          {exerciseNote && (
+            <span className="text-sm italic text-indigo-600 mt-1">
+              Note: {exerciseNote}
+            </span>
+          )}
+        </div>{" "}
         <button
-          onClick={() => toggleExercise(week, exerciseTitle)}
+          onClick={() => {
+            if (exerciseData) {
+              // If already marked as done, just toggle it off
+              toggleExercise(week, exerciseTitle);
+            } else {
+              // Open note modal to add a note before marking as done
+              setNoteModal({
+                show: true,
+                week,
+                exercise: exerciseTitle,
+                isGroup: false,
+                groupKey: "",
+              });
+              // Clear any previous note content
+              setNoteContent("");
+            }
+          }}
           className={`ml-3 px-3 py-1 rounded-lg flex-shrink-0 flex items-center whitespace-nowrap ${
             exerciseData ? "btn btn-success" : "btn btn-primary"
           }`}

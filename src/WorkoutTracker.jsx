@@ -315,6 +315,8 @@ export default function WorkoutTracker() {
             completed={completed}
             showDetails={showDetails}
             toggleExercise={toggleExercise}
+            setNoteModal={setNoteModal}
+            setNoteContent={setNoteContent}
           />
         );
       }
@@ -368,6 +370,8 @@ export default function WorkoutTracker() {
             groupItems={groupItems}
             completed={completed}
             toggleGroup={toggleGroup}
+            setNoteModal={setNoteModal}
+            setNoteContent={setNoteContent}
           />
         );
 

@@ -7,6 +7,8 @@ const ExerciseGroup = ({
   groupItems,
   completed,
   toggleGroup,
+  setNoteModal,
+  setNoteContent,
 }) => {
   // For the new JSON structure, the groupKey will use the actual group identifier from the JSON
   const groupKey = `${week}-${groupType.toLowerCase()}_${groupNumber}`;
@@ -19,9 +21,25 @@ const ExerciseGroup = ({
     >
       {" "}
       <div className="flex justify-between items-center mb-3">
-        <p className="font-semibold text-slate-700 flex-shrink">{`${groupType} ${groupNumber}`}</p>
+        <p className="font-semibold text-slate-700 flex-shrink">{`${groupType} ${groupNumber}`}</p>{" "}
         <button
-          onClick={() => toggleGroup(groupKey)}
+          onClick={() => {
+            if (completed[groupKey]) {
+              // If already marked as done, just toggle it off
+              toggleGroup(groupKey);
+            } else {
+              // Open note modal to add a note before marking as done
+              setNoteModal({
+                show: true,
+                week,
+                exercise: `${groupType} ${groupNumber}`,
+                isGroup: true,
+                groupKey: groupKey,
+              });
+              // Clear any previous note content
+              setNoteContent("");
+            }
+          }}
           className={`px-3 py-1 rounded-lg flex-shrink-0 ml-4 flex items-center ${
             completed[groupKey] ? "btn btn-success" : "btn btn-primary"
           }`}
