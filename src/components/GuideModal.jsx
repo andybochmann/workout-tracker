@@ -25,12 +25,14 @@ const GuideModal = ({ showGuide, setShowGuide, workoutPlanData }) => {
       }
     });
   });
-
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 animate-fadeIn">
+    <div
+      className="fixed inset-0 bg-black bg-opacity-75 flex items-start justify-center p-4 z-50 animate-fadeIn"
+      style={{ paddingTop: "2rem" }}
+    >
       <div
         className="bg-white rounded-xl shadow-lg p-6 max-w-xl w-full"
-        style={{ maxHeight: "90vh" }}
+        style={{ maxHeight: "calc(100vh - 4rem)" }}
       >
         <h2 className="text-xl font-bold mb-4 text-indigo-600 flex items-center">
           <svg

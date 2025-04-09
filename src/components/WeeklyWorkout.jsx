@@ -67,13 +67,13 @@ const WeeklyWorkout = ({
             />
           </svg>
         </div>
-      </div>
-
+      </div>{" "}
       <div
-        className={`accordion-content ${expandedWeeks[week] ? "open" : ""}`}
-      ></div>
-      <div className="p-4 space-y-2 bg-white">
-        {expandedWeeks[week] && renderExercises(week, exercises)}
+        className={`accordion-content ${
+          expandedWeeks[week] ? "open" : ""
+        } bg-white`}
+      >
+        <div className="p-4 space-y-2">{renderExercises(week, exercises)}</div>
       </div>
     </div>
   );
