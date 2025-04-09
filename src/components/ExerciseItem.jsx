@@ -7,11 +7,17 @@ const ExerciseItem = ({
   showDetails,
   toggleExercise,
 }) => {
-  const key = `${week}-${exercise}`;
+  // Handle both old string format and new object format
+  const exerciseTitle =
+    typeof exercise === "object" ? exercise.title : exercise;
+  const key = `${week}-${exerciseTitle}`;
   const exerciseData = completed[key];
 
-  // For debugging - add this to check what's in exerciseData
-  console.log("Exercise data for", key, exerciseData);
+  // Add execution details if available
+  const executionDetails =
+    typeof exercise === "object" && exercise.execution
+      ? exercise.execution
+      : "";
 
   return (
     <div
@@ -19,16 +25,20 @@ const ExerciseItem = ({
         exerciseData ? "bg-green-100" : "bg-white"
       }`}
     >
-      {" "}
       <div className="flex justify-between items-center w-full">
-        <span
-          onClick={() => showDetails(exercise)}
-          className="cursor-pointer hover:text-indigo-600 font-medium"
-        >
-          {exercise}
-        </span>
+        <div className="flex flex-col">
+          <span
+            onClick={() => showDetails(exercise)}
+            className="cursor-pointer hover:text-indigo-600 font-medium"
+          >
+            {exerciseTitle}
+          </span>
+          {executionDetails && (
+            <span className="text-sm text-gray-500">{executionDetails}</span>
+          )}
+        </div>
         <button
-          onClick={() => toggleExercise(week, exercise)}
+          onClick={() => toggleExercise(week, exerciseTitle)}
           className={`ml-3 px-3 py-1 rounded-lg flex-shrink-0 flex items-center whitespace-nowrap ${
             exerciseData ? "btn btn-success" : "btn btn-primary"
           }`}

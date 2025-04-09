@@ -9,8 +9,8 @@ import ExerciseItem from "./components/ExerciseItem";
 import ExerciseGroup from "./components/ExerciseGroup";
 import { useState, useEffect, useCallback, useRef } from "react";
 
-import { WORKOUT_PLAN_FULL } from "./workoutData.js";
-import { EXERCISE_GUIDE_FULL } from "./exerciseData.js";
+// Import the new workout plan JSON file
+import WorkoutPlanData from "./full_12_week_workout_plan.json";
 
 export default function WorkoutTracker() {
   // State management
@@ -222,102 +222,54 @@ export default function WorkoutTracker() {
       [week]: !prev[week],
     }));
   }, []);
-
   const showDetails = useCallback((exercise) => {
-    // Check if it's a warm-up or cool-down
-    if (exercise.startsWith("Warm-Up:") || exercise.startsWith("Cool-Down:")) {
-      setModalContent({
-        title: exercise.split(":")[0].trim(),
-        description: exercise.split(":")[1].trim(),
-        isWarmupCooldown: true,
-      });
-      return;
-    }
-
-    // For cardio exercises with duration
-    if (
-      exercise.match(
-        /(Elliptical|Treadmill|Row|Walk|Run).*(min|ladder|pyramid|intervals)/i
-      )
-    ) {
-      setModalContent({
-        title: "Cardio",
-        description: exercise,
-        isWarmupCooldown: true,
-      });
-      return;
-    }
-
-    // Extract the base exercise name (remove sets/reps and parenthetical notes)
-    const baseExercise = exercise
-      .replace(/\s*\d+x\d+.*$/, "") // Remove sets/reps
-      .replace(/\s*\([^)]*\)/g, "") // Remove parenthetical notes
-      .replace(/\s+ea$/, "") // Remove "ea" suffix
-      .split(" ")
-      .filter((word) => !word.match(/^[0-9]+$/)) // Remove standalone numbers
-      .join(" ")
-      .trim();
-
-    // Try different name variations
-    const variations = [
-      baseExercise,
-      baseExercise.replace(/^DB\s+/, ""), // Try without "DB" prefix
-      baseExercise.replace(/^Barbell\s+/, ""), // Try without "Barbell" prefix
-      ...baseExercise
-        .split(" ")
-        .map((_, i) => baseExercise.split(" ").slice(i).join(" ")),
-    ];
-
-    // Find the first matching exercise in our guide
-    const match = variations.find((v) => EXERCISE_GUIDE_FULL[v]);
-    if (match && EXERCISE_GUIDE_FULL[match]) {
-      const setsReps = exercise.match(/\d+x\d+/)?.[0] || "";
-      const extraInfo = exercise.includes("ea") ? " each side" : "";
-      const duration = exercise.match(/\d+\s*s/)?.[0] || "";
-      const sets = exercise.match(/(\d+)\s*sets?/i)?.[1] || "";
-
+    // If exercise is an object (from the new JSON format)
+    if (typeof exercise === "object") {
       let prescription = "";
-      if (setsReps) prescription = `Prescribed: ${setsReps}${extraInfo}`;
-      else if (duration) prescription = `Hold for: ${duration}`;
-      else if (sets) prescription = `Prescribed: ${sets} sets${extraInfo}`;
+
+      // Format prescription information based on available fields
+      if (exercise.execution) {
+        prescription = `Prescribed: ${exercise.execution}`;
+      }
+
+      // Add rest information if available
+      if (exercise.rest && exercise.rest.trim() !== "") {
+        prescription += `, Rest: ${exercise.rest}`;
+      }
 
       setModalContent({
-        title: match,
-        description: EXERCISE_GUIDE_FULL[match],
+        title: exercise.title,
+        description: exercise.description,
         prescription,
-        isExercise: true,
+        isExercise:
+          exercise.title !== "Warm-Up" && exercise.title !== "Cool-Down",
+        isWarmupCooldown:
+          exercise.title === "Warm-Up" || exercise.title === "Cool-Down",
       });
-    } else {
-      // For exercises without a guide entry, show the exercise as is
-      setModalContent({
-        title: baseExercise,
-        description:
-          "Perform the exercise according to the prescribed sets and reps.",
-        prescription: `Prescribed: ${exercise.match(/\d+x\d+/)?.[0] || ""}${
-          exercise.includes("ea") ? " each side" : ""
-        }`,
-        isExercise: true,
-      });
+      return;
     }
-  }, []);
 
+    // Legacy code for handling string exercises (should not be reached with new format)
+    setModalContent({
+      title: "Exercise",
+      description: "Please update to the new exercise format.",
+      isExercise: true,
+    });
+  }, []);
   // Function to check if all exercises in a week are completed
   const isWeekCompleted = useCallback(
     (week, exercises) => {
       // Check all individual exercises
-      const individualExercises = exercises.filter(
-        (ex) => !ex.match(/^(Superset|Tri-Set|Complex)\s+(\d+)[A-Z]:/i)
-      );
+      const individualExercises = exercises.filter((ex) => !ex.group);
       const allIndividualCompleted = individualExercises.every(
-        (ex) => completed[`${week}-${ex}`]
+        (ex) => completed[`${week}-${ex.title}`]
       );
 
       // Check all exercise groups
       const groups = new Set();
       exercises.forEach((ex) => {
-        const match = ex.match(/^(Superset|Tri-Set|Complex)\s+(\d+)[A-Z]:/i);
-        if (match) {
-          groups.add(`${week}-${match[1]}-${match[2]}`);
+        if (ex.group) {
+          groups.add(`${week}-${ex.group}`);
         }
       });
 
@@ -333,49 +285,78 @@ export default function WorkoutTracker() {
       ); // Ensure there are exercises to check
     },
     [completed]
-  );
-  // Update the renderExercises function to use the new component-based design
+  ); // Updated renderExercises function for the new JSON format
   const renderExercises = (week, exercises) => {
     const renderedElements = [];
-    let i = 0;
-    while (i < exercises.length) {
-      const ex = exercises[i];
-      const isGroupStart = ex.match(
-        /^(Superset|Tri-Set|Complex)\s+(\d+)[A-Z]:/i
-      );
 
-      if (isGroupStart) {
-        const groupType = isGroupStart[1];
-        const groupNumber = isGroupStart[2];
-        const groupKey = `${week}-${groupType}-${groupNumber}`;
-        const groupItems = [];
-        const exercisesInGroup = [];
+    // Group exercises by their group property
+    const groupedExercises = {};
 
-        // Find all items in this group
-        while (
-          i < exercises.length &&
-          exercises[i].match(
-            new RegExp(`^${groupType}\\s+${groupNumber}[A-Z]:`, "i")
-          )
-        ) {
-          const currentEx = exercises[i];
-          exercisesInGroup.push(currentEx);
-
-          groupItems.push(
-            <div
-              key={`${week}-${currentEx}`}
-              className="flex items-center justify-between p-3 rounded-lg bg-white shadow transition hover:shadow-md mb-2"
-            >
-              <span
-                onClick={() => showDetails(currentEx)}
-                className="cursor-pointer hover:text-indigo-600 flex-1 mr-2"
-              >
-                {currentEx.replace(/^[A-Z]:\s*/, "")}
-              </span>
-            </div>
-          );
-          i++;
+    // First, collect all exercises that belong to groups
+    exercises.forEach((ex) => {
+      if (ex.group) {
+        if (!groupedExercises[ex.group]) {
+          groupedExercises[ex.group] = [];
         }
+        groupedExercises[ex.group].push(ex);
+      }
+    });
+
+    // Now render the exercises
+    exercises.forEach((ex) => {
+      // If it's a non-grouped exercise
+      if (!ex.group) {
+        // Render individual exercise using the ExerciseItem component
+        renderedElements.push(
+          <ExerciseItem
+            key={`${week}-${ex.title}`}
+            exercise={ex}
+            week={week}
+            completed={completed}
+            showDetails={showDetails}
+            toggleExercise={toggleExercise}
+          />
+        );
+      }
+      // If it's the first exercise of a group we haven't rendered yet
+      else if (
+        groupedExercises[ex.group] &&
+        groupedExercises[ex.group].includes(ex)
+      ) {
+        // Get all exercises in this group
+        const exercisesInThisGroup = groupedExercises[ex.group];
+
+        // Create group items from grouped exercises
+        const groupItems = exercisesInThisGroup.map((groupEx) => (
+          <div
+            key={`${week}-${groupEx.title}`}
+            className="flex items-center justify-between p-3 rounded-lg bg-white shadow transition hover:shadow-md mb-2"
+          >
+            <span
+              onClick={() => showDetails(groupEx)}
+              className="cursor-pointer hover:text-indigo-600 flex-1 mr-2"
+            >
+              {groupEx.title}
+            </span>
+          </div>
+        ));
+
+        // Determine the group type from the group name (e.g., "superset_1" -> "Superset")
+        const groupType = ex.group.includes("superset")
+          ? "Superset"
+          : ex.group.includes("tri-set")
+          ? "Tri-Set"
+          : ex.group.includes("complex")
+          ? "Complex"
+          : "Group";
+
+        // Extract the group number from the group ID
+        const groupNumber = ex.group.match(/\d+/)
+          ? ex.group.match(/\d+/)[0]
+          : "";
+
+        // Generate a group key
+        const groupKey = `${week}-${ex.group}`;
 
         // Add the group container using the ExerciseGroup component
         renderedElements.push(
@@ -389,21 +370,12 @@ export default function WorkoutTracker() {
             toggleGroup={toggleGroup}
           />
         );
-      } else {
-        // Render individual exercise using the ExerciseItem component
-        renderedElements.push(
-          <ExerciseItem
-            key={`${week}-${ex}`}
-            exercise={ex}
-            week={week}
-            completed={completed}
-            showDetails={showDetails}
-            toggleExercise={toggleExercise}
-          />
-        );
-        i++;
+
+        // Remove these exercises from the groupedExercises to avoid rendering them again
+        delete groupedExercises[ex.group];
       }
-    }
+    });
+
     return renderedElements;
   };
 
@@ -506,9 +478,8 @@ export default function WorkoutTracker() {
   // Render the Workouts view
   return (
     <div className="p-4 space-y-4 max-w-3xl mx-auto bg-slate-50 min-h-screen">
-      <Header view={view} setView={setView} setShowGuide={setShowGuide} />
-
-      {Object.entries(WORKOUT_PLAN_FULL).map(([week, exercises]) => (
+      <Header view={view} setView={setView} setShowGuide={setShowGuide} />{" "}
+      {Object.entries(WorkoutPlanData).map(([week, exercises]) => (
         <WeeklyWorkout
           key={week}
           week={week}
@@ -520,18 +491,15 @@ export default function WorkoutTracker() {
           isWeekCompleted={isWeekCompleted}
         />
       ))}
-
       <ExerciseModal
         modalContent={modalContent}
         setModalContent={setModalContent}
-      />
-
+      />{" "}
       <GuideModal
         showGuide={showGuide}
         setShowGuide={setShowGuide}
-        EXERCISE_GUIDE_FULL={EXERCISE_GUIDE_FULL}
+        workoutPlanData={WorkoutPlanData}
       />
-
       <NotesModal
         noteModal={noteModal}
         noteContent={noteContent}

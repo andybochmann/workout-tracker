@@ -8,7 +8,8 @@ const ExerciseGroup = ({
   completed,
   toggleGroup,
 }) => {
-  const groupKey = `${week}-${groupType}-${groupNumber}`;
+  // For the new JSON structure, the groupKey will use the actual group identifier from the JSON
+  const groupKey = `${week}-${groupType.toLowerCase()}_${groupNumber}`;
 
   return (
     <div

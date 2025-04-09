@@ -1,0 +1,1874 @@
+{
+  "Week 1 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 1 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 1 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 2 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 2 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 2 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 3 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 3 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 3 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 4 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 4 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 4 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 5 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 5 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 5 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 6 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 6 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 6 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 7 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 7 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 7 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 8 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 8 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 8 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 9 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 9 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 9 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 10 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 10 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 10 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 11 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 11 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 11 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 12 - Day 1": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Back Squat",
+      "execution": "3 sets \u00d7 8 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Stand with bar on upper back, feet shoulder-width. Squat down to at least thigh-parallel, then drive through heels to stand. Keep core tight and chest up. (This is your heavy compound lift for legs \u2013 choose a weight that is challenging for ~8 reps with good form.)"
+    },
+    {
+      "title": "Bent-Over Barbell Row",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Hinge at the hips with a flat back, pull the barbell up to your lower chest, squeezing shoulder blades, then lower under control.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Dumbbell Overhead Press",
+      "execution": "3 sets \u00d7 10 reps",
+      "rest": "60 sec after superset round",
+      "description": "Stand or sit with dumbbells at shoulder height, press them straight overhead, then lower to starting position.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Leg Curl (Machine)",
+      "execution": "3 sets \u00d7 12 reps",
+      "rest": "30 sec after superset round",
+      "description": "Adjust the machine so the roller pad rests just above your ankles. Curl your legs, bringing heels toward your butt, squeezing your hamstrings, then slowly extend back out.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Plank",
+      "execution": "3 sets \u00d7 30 seconds",
+      "rest": "30 sec after superset round",
+      "description": "Get into a plank position (forearms on floor, body straight) and hold, keeping your abs and glutes tight.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 12 - Day 2": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ],
+  "Week 12 - Day 3": [
+    {
+      "title": "Warm-Up",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "Start with 5 minutes of light cardio (e.g., brisk walk, easy jog, or rowing) followed by dynamic stretches: leg swings, arm circles, lunges, torso twists. Prepare especially for the movements to come."
+    },
+    {
+      "title": "Barbell Bench Press",
+      "execution": "3 sets \u00d7 6\u20138 reps (heavy)",
+      "rest": "2 min between sets",
+      "description": "Lie on bench, grip bar slightly wider than shoulder-width. Lower the bar to mid-chest, then press up to arms\u2019 length. Keep your shoulder blades pinched together on the bench and feet planted."
+    },
+    {
+      "title": "Dumbbell Walking Lunge",
+      "execution": "3 sets \u00d7 10 each leg",
+      "rest": "60 sec after superset round",
+      "description": "Hold dumbbells at your sides, step forward with one leg and lower until front thigh is parallel to floor, then push back to standing. Alternate legs.",
+      "group": "superset_1"
+    },
+    {
+      "title": "One-Arm Dumbbell Row",
+      "execution": "3 sets \u00d7 10 each arm",
+      "rest": "60 sec after superset round",
+      "description": "Support one knee and hand on a bench, keep back flat, pull the dumbbell up toward your hip (elbow close to your side), then lower.",
+      "group": "superset_1"
+    },
+    {
+      "title": "Cable Triceps Pushdown",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "At a cable station, use a rope or straight bar attachment. Keeping elbows at your sides, extend your arms down to push the weight, contracting the triceps, then return to 90\u00b0 at elbows.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Dumbbell Biceps Curl",
+      "execution": "2 sets \u00d7 12 reps",
+      "rest": "30\u201345 sec after superset round",
+      "description": "Hold dumbbells with palms up, curl weights toward your shoulders without swinging, then lower.",
+      "group": "superset_2"
+    },
+    {
+      "title": "Russian Twist",
+      "execution": "3 sets \u00d7 15 per side",
+      "rest": "30 sec between sets",
+      "description": "Sit on the floor with knees bent, lean back slightly with a straight back. Hold a ball or clasp hands and rotate torso side to side, touching floor each side."
+    },
+    {
+      "title": "Cool-Down",
+      "execution": "5\u201310 minutes",
+      "rest": "",
+      "description": "End with light cardio (e.g., slow walk or cycling) for 3\u20135 minutes, followed by static stretching: hold stretches for hamstrings, quads, glutes, chest, back, and shoulders for 20\u201330 seconds each."
+    }
+  ]
+}

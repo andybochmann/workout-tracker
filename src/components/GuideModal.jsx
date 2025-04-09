@@ -5,10 +5,26 @@ import React from "react";
  * @param {Object} props
  * @param {boolean} props.showGuide - Whether to show the guide modal
  * @param {Function} props.setShowGuide - Function to toggle guide visibility
- * @param {Object} props.EXERCISE_GUIDE_FULL - Exercise guide data object
+ * @param {Object} props.workoutPlanData - Workout plan data from JSON file
  */
-const GuideModal = ({ showGuide, setShowGuide, EXERCISE_GUIDE_FULL }) => {
+const GuideModal = ({ showGuide, setShowGuide, workoutPlanData }) => {
   if (!showGuide) return null;
+
+  // Extract all unique exercises from the workout plan
+  const allExercises = new Map();
+
+  // Loop through all weeks and collect unique exercises with their descriptions
+  Object.values(workoutPlanData).forEach((weekExercises) => {
+    weekExercises.forEach((exercise) => {
+      if (
+        exercise.title &&
+        exercise.description &&
+        !allExercises.has(exercise.title)
+      ) {
+        allExercises.set(exercise.title, exercise.description);
+      }
+    });
+  });
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 animate-fadeIn">
@@ -31,7 +47,7 @@ const GuideModal = ({ showGuide, setShowGuide, EXERCISE_GUIDE_FULL }) => {
           className="space-y-3 overflow-y-auto pr-2"
           style={{ maxHeight: "calc(90vh - 8rem)" }}
         >
-          {Object.entries(EXERCISE_GUIDE_FULL).map(([name, desc]) => (
+          {Array.from(allExercises).map(([name, desc]) => (
             <div
               key={name}
               className="p-4 border rounded-lg shadow-sm hover:shadow-md transition bg-slate-50"
